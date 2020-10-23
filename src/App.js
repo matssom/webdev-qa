@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import Question from './components/Question';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import fetchQuestions from './fetchQuestions';
+
+const createQuestionList = (list) => {
+    return (
+        <ul>
+            {list.map((e, i) => <Question key={i} q={e.question} a={e.answer} t={e.topic}/>)}
+        </ul>
+    )
+}
+
+const App = () => {
+
+    const [qna, setQna] = useState(undefined);
+
+    useEffect(async () => {
+        const q = await fetchQuestions();
+        setQna(q.data);
+    }, []);
+
+    return (
+        <div>
+            {qna !== undefined ? createQuestionList(qna)  : <p>Loading...</p>}
+        </div>
+    );
 }
 
 export default App;
