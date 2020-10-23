@@ -2,7 +2,7 @@ import React from 'react';
 
 import ReactMarkdown from 'react-markdown/with-html';
 
-import styled from './styled.module.scss';
+// import styled from './styled.module.scss';
 
 const QuestionGroup = (props) => {
 

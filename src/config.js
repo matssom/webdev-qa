@@ -3,6 +3,7 @@ const config = {
         questionAPI: {
             baseURL: 'http://localhost:1337',
             paths: {
+                topic: '/question-types',
                 qna: '/qnas'
             }
         }
@@ -11,7 +12,8 @@ const config = {
         questionAPI: {
             baseURL: 'https://git.heroku.com/webdev-qa.git',
             paths: {
-                qna: '/qnas'
+                qna: '/qnas',
+                topic: '/question-types'
             }
         }
     }
