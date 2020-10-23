@@ -1,6 +1,8 @@
 import axios from 'axios';
 import config from './config';
 
+console.log(config);
+
 const fetchQuestions = () => {
     return axios.get(`${config.questionAPI.baseURL}${config.questionAPI.paths.qna}`)
     .catch(function (error) {
