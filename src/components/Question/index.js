@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styled from './styled.module.scss';
+
 const Question = ({ q, a, t}) => {
     
 
