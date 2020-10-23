@@ -6,12 +6,12 @@ const Question = ({ q, a, t}) => {
     
 
     return(
-        <li>
-            <div>
-                <h2>{q}</h2>
-                <span>{t}</span>
+        <li className={styled.container}>
+            <div className={styled.headline}>
+                <h3 className={styled.question}>Q: {q}</h3>
+                <span className={styled.topic}>{t}</span>
             </div>
-            <p>{a}</p>
+            <p className={styled.answer}>{a}</p>
         </li>
     );
 }

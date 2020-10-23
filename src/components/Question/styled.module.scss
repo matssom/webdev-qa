@@ -1,0 +1,40 @@
+.container {
+    // border-top: 1px solid gray;
+    margin: 4rem 0;
+    border-radius: .3rem;
+    overflow: hidden;
+}
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightblue;
+    padding: 1rem 2rem;
+    gap: 2rem;
+}
+
+.question {
+    font-family: 'Lexend Exa';
+    margin: 0;
+}
+
+.topic {
+    color: rgb(71, 71, 71);
+}
+
+.answer {
+    padding: 1rem 2rem;
+    margin: 0;
+    background-color: rgb(206, 236, 247);
+}
+
+@media (max-width: 40rem) {
+    .headline {
+        display: block;
+    }
+
+    .topic {
+        display: none;
+    }
+}
