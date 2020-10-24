@@ -30,9 +30,10 @@ const renderList = (list) => {
 
 const clean = (qna) => {
     return qna.map(e => {
+        const topic = e.question_type && e.question_type.Type ? e.question_type.Type : 'General';
         return {
             question : e.question, 
-            topic : e.question_type.Type, 
+            topic : topic,
             answer : e.answer
         };
     });
@@ -77,7 +78,6 @@ const QuestionGroup = () => {
         if (selected || searchQuery) {
             const timeout = setTimeout(() => {
                 qFilter();
-                console.log('kjør');
             }, 500);
 
             return () => {
@@ -97,17 +97,20 @@ const QuestionGroup = () => {
 
     const qFilter = () => {
         let filteredList = [];
+        let searchedList = [];
         let filteredIndex = [];
-        let searchScore = [];
+        let searchResult = [];
         
         filteredList = filterByTopic(qna, selected);
         
         if (searchQuery !== '') {
             filteredIndex = createIndex(filteredList);
-            searchScore = search(filteredIndex, searchQuery);
-            searchScore.forEach((e, i) => {
-                setFilteredQna(filteredList.filter((s, j) => j === e.index));
-            });
+            searchResult = search(filteredIndex, searchQuery);
+            searchResult.sort((a, b) => b.score - a.score);
+            for (const term of searchResult) {
+                searchedList.push(filteredList[term.index]);
+            }
+            setFilteredQna(searchedList);
         } else {
             setFilteredQna(filteredList);
         }
@@ -115,12 +118,12 @@ const QuestionGroup = () => {
 
     return (
         <div className={styled.container}>
-            <form className={styled.form}>
+            <form className={styled.form} onSubmit={(e) => e.preventDefault()}>
                 <div className={styled.formGroup}>
                     <label className={styled.label} htmlFor="search">Find Anything</label>
                     <input onChange={changeSearchQuery} id="search" className={styled.search} type="text" placeholder="Search.." name="search"></input>
                 </div>
-                <div className={styled.formGroup}   >
+                <div className={styled.formGroup}>
                     <label className={styled.label} htmlFor="dropdown">Topic</label>
                     <Dropdown id="dropdown" onChange={changeSelected} choices={types ? ['All', ...types.map(e => e.Type)] : ['All']}/>
                 </div>
