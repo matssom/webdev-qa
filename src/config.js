@@ -1,12 +1,20 @@
 const config = {
     dev:{
         questionAPI: {
-            baseURL: 'http://localhost:1337'
+            baseURL: 'http://localhost:1337',
+            paths: {
+                topic: '/question-types',
+                qna: '/qnas'
+            }
         }
     },
     prod: {
         questionAPI: {
-            baseURL: 'http://localhost:1337'
+            baseURL: 'https://git.heroku.com/webdev-qa.git',
+            paths: {
+                qna: '/qnas',
+                topic: '/question-types'
+            }
         }
     }
 };

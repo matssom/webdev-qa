@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'amidst';
+import './assets/global.scss';
 
 import App from './App';
 

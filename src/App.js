@@ -1,29 +1,29 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import Question from './components/Question';
 
-import fetchQuestions from './fetchQuestions';
+import Container from './components/Container';
+import QuestionGroup from './components/QuestionGroup';
+import Disclaimer from './components/Disclaimer';
 
-const createQuestionList = (list) => {
-    return (
-        <ul>
-            {list.map((e, i) => <Question key={i} q={e.question} a={e.answer} t={e.topic}/>)}
-        </ul>
-    )
-}
+import styled from './styled.module.scss';
 
 const App = () => {
 
-    const [qna, setQna] = useState(undefined);
-
-    useEffect(async () => {
-        const q = await fetchQuestions();
-        setQna(q.data);
-    }, []);
-
     return (
         <div>
-            {qna !== undefined ? createQuestionList(qna)  : <p>Loading...</p>}
+            <Container>
+                <header>
+                    <div >
+                        <div className={styled.centered}>
+                            <h1 className={styled.headline}>Frequently asked questions</h1>
+                            <h2 className={styled.tagline}>Universal webdesing and development - OsloMet. Updated every week. </h2>
+                        </div>
+                    </div>
+                </header>
+                <main>
+                    <QuestionGroup />
+                </main>
+            </Container>
+            <Disclaimer />
         </div>
     );
 }

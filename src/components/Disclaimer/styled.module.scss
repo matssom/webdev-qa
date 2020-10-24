@@ -1,0 +1,33 @@
+.container {
+    width: 45rem;
+    max-width: calc(100% - 3.6rem);
+    position: fixed;
+    margin: 1.8rem;
+    bottom: 0;
+    right: 0;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr min-content;
+    background-color: lightyellow;
+    border-radius: .3rem;
+    padding: 1.8rem;
+    border: 1px solid gray;
+}
+
+.disclaimer {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.button {
+    background-color: transparent;
+    top: 0;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    font-family: 'Lexend Exa';
+}

@@ -1,0 +1,41 @@
+.container {
+    padding: 4rem 0;
+}
+
+.form {
+    margin-bottom: 5rem;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    gap: 4rem;
+}
+
+.formGroup {
+    
+}
+
+.search {
+    display: block;
+    width: 100%;
+    line-height: 4rem;
+    height: 4rem;
+    padding: 0 1.3rem;
+    border-radius: .3rem;
+    border: 1px solid gray;
+}
+
+.label {
+    display: block;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.filterHeadline {
+    margin: 0 0 1rem 0;
+    font-family: 'Lexend Exa';
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}

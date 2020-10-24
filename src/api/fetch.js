@@ -1,8 +1,8 @@
 import axios from 'axios';
-import config from './config';
+import config from '../config';
 
-const fetchQuestions = () => {
-    return axios.get(`${config.questionAPI.baseURL}/question-and-answers`)
+const fetch = (path) => {
+    return axios.get(`${config.questionAPI.baseURL}${path}`)
     .catch(function (error) {
       if (error.response) {
         console.log(error.response.data);
@@ -12,4 +12,4 @@ const fetchQuestions = () => {
     });
 };
 
-export default fetchQuestions;
+export default fetch;

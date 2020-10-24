@@ -1,0 +1,44 @@
+.container {
+    // border-top: 1px solid gray;
+    margin: 0;
+    // border-radius: .3rem;s
+    // overflow: hidden;
+    border-bottom: 1px solid gray;
+    // border-top: 1px solid gray;
+}
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(245, 250, 252);
+    padding: 1rem 2rem;
+    gap: 2rem;
+}
+
+.question {
+    font-family: 'Lexend Exa';
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.topic {
+    color: rgb(71, 71, 71);
+    font-size: 1.3rem;
+}
+
+.answer {
+    padding: 1rem 2rem;
+    margin: 0;
+}
+
+@media (max-width: 40rem) {
+    .headline {
+        display: block;
+    }
+
+    .topic {
+        display: none;
+    }
+}
