@@ -12,7 +12,7 @@ const config = {
     },
     prod: {
         questionAPI: {
-            baseURL: 'https://git.heroku.com/webdev-qa.git',
+            baseURL: 'https://webdev-qa.herokuapp.com',
             paths: {
                 qna: '/qnas',
                 topic: '/question-types'
@@ -25,4 +25,4 @@ const ReactIsInDevelomentMode = () => {
     return '_self' in React.createElement('div');
 }
 
-export default ReactIsInDevelomentMode ? config.dev : config.prod;
+export default ReactIsInDevelomentMode() ? config.dev : config.prod;
