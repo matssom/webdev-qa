@@ -58,7 +58,16 @@ const QuestionGroup = () => {
 
     return (
         <div className={styled.container}>
-            <Dropdown onChange={changeSelected} choices={types ? ['All', ...types.map(e => e.Type)] : ['All']}/>
+            <form className={styled.form}>
+                <div className={styled.formGroup}>
+                    <label className={styled.label} htmlFor="search">Find Anything</label>
+                    <input id="search" className={styled.search} type="text" placeholder="Search.." name="search"></input>
+                </div>
+                <div className={styled.formGroup}   >
+                    <label className={styled.label} htmlFor="dropdown">Topic</label>
+                    <Dropdown id="dropdown" onChange={changeSelected} choices={types ? ['All', ...types.map(e => e.Type)] : ['All']}/>
+                </div>
+            </form>
             {qna !== undefined ? qna ? filterList(qna, selected) : <Loading text="Could not load questions"/> : <Loading />}
         </div>
     );

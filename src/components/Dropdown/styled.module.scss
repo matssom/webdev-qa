@@ -1,5 +1,10 @@
 .container {
-    
+    display: block;
+    height: 4rem;
+    padding: 0 1.3rem;
+    line-height: 4rem;
+    border: 1px solid gray;
+    border-radius: .3rem;
 }
 
 .option {

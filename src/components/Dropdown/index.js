@@ -14,7 +14,7 @@ const Option = (props) => {
 const Dropdown = (props) => {
 
     return (
-        <select onChange={props.onChange} className={styled.containter}>
+        <select onChange={props.onChange} className={styled.container}>
             {props.choices ? props.choices.map((e, i) => <Option key={i} >{e}</Option>) : ''}
         </select>
     );
