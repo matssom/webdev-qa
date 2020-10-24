@@ -1,3 +1,5 @@
+import React from 'react';
+
 const config = {
     dev:{
         questionAPI: {
@@ -19,4 +21,8 @@ const config = {
     }
 };
 
-export default process.env ? config.dev : config.prod;
+const ReactIsInDevelomentMode = () => { 
+    return '_self' in React.createElement('div');
+}
+
+export default ReactIsInDevelomentMode ? config.dev : config.prod;
