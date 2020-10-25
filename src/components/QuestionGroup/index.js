@@ -44,6 +44,7 @@ const createIndex = (qna) => {
 };
 
 const filterByTopic = (qna, topic) => {
+    if (!qna) return qna;
     return topic === 'All' ? qna : qna.filter(e => {
         return e.topic === topic;
     });
@@ -55,12 +56,15 @@ const search = (index, term) => {
 }
 
 const QuestionGroup = () => {
+
+    const filterPreference = localStorage.getItem('filter');
     
     const [qna, setQna] = useState();
     const [types, setTypes] = useState();
-    const [selected, setSelected] = useState('All');
+    const [selected, setSelected] = useState(filterPreference ? filterPreference : 'All');
     const [searchQuery, setSearchQuery] = useState('')
     const [filteredQna, setFilteredQna] = useState(qna);
+    const [lastFilter, setLastFilter] = useState('selected');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -76,22 +80,27 @@ const QuestionGroup = () => {
         fetchData();
 
         if (selected || searchQuery) {
+            const t = lastFilter === 'selected' ? 0 : 500;
+
             const timeout = setTimeout(() => {
                 qFilter();
-            }, 500);
+            }, t);
 
             return () => {
                 clearTimeout(timeout);
             };
         }
 
-    }, [qna, types, selected, searchQuery]);
+    }, [qna, types, selected, searchQuery, lastFilter]);
 
     const changeSelected = (e) => {
+        localStorage.setItem('filter', e.target.value);
+        setLastFilter('selected');
         setSelected(e.target.value);
     }
 
     const changeSearchQuery = (e) => {
+        setLastFilter('searched');
         setSearchQuery(e.target.value);
     }
 
@@ -125,7 +134,7 @@ const QuestionGroup = () => {
                 </div>
                 <div className={styled.formGroup}>
                     <label className={styled.label} htmlFor="dropdown">Topic</label>
-                    <Dropdown id="dropdown" onChange={changeSelected} choices={types ? ['All', ...types.map(e => e.Type)] : ['All']}/>
+                    <Dropdown value={selected} id="dropdown" onChange={changeSelected} choices={types ? ['All', ...types.map(e => e.Type)] : ['All']}/>
                 </div>
             </form>
             {qna !== undefined ? qna ? filteredQna ? renderList(filteredQna) : renderList(qna) : <Loading text="Could not load questions"/> : <Loading />}

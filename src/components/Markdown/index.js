@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ReactMarkdown from 'react-markdown/with-html';
+import gfm from 'remark-gfm'
 
 // import styled from './styled.module.scss';
 
@@ -8,7 +9,7 @@ const QuestionGroup = (props) => {
 
     return (
         <div>
-            <ReactMarkdown {...props} allowDangerousHtml />
+            <ReactMarkdown plugins={[gfm]} {...props} allowDangerousHtml />
         </div>
     );
 };
